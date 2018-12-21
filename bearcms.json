@@ -1,0 +1,33 @@
+{
+    "id": "bearcms/focus-theme-addon",
+    "name": "Focus Theme",
+    "description": "Focus is a theme build to present the best way possible your small business or yourself. It provides a simple and clean experience for websites with a few pages. The friendly home page will greet your visitors and guide them to the other pages (we recommend adding a Navigation element here). It's perfect for blogs too.",
+    "author": {
+        "name": "Bear CMS",
+        "email": "support@bearcms.com",
+        "url": "https://bearcms.com/"
+    },
+    "media": [
+        {
+            "filename": "/assets/1.jpg",
+            "width": 1246,
+            "height": 968
+        },
+        {
+            "filename": "/assets/2.jpg",
+            "width": 1246,
+            "height": 968
+        },
+        {
+            "filename": "/assets/3.jpg",
+            "width": 1246,
+            "height": 968
+        }
+        ,
+        {
+            "filename": "/assets/4.jpg",
+            "width": 1246,
+            "height": 968
+        }
+    ]
+}
