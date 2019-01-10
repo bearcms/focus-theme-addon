@@ -26,7 +26,7 @@ $app->bearCMS->themes
             $context->assets
             ->addDir('assets');
 
-            $theme->version = '1.0';
+            $theme->version = '1.1';
 
             $theme->get = function(\BearCMS\Themes\Options $options) use ($context) {
                 $templateFilename = $context->dir . '/components/template.php';

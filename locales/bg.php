@@ -19,7 +19,6 @@ return [
     'bearcms.themes.focus.options.Visibility' => 'Видимост',
     'bearcms.themes.focus.options.Visible' => 'Видимо',
     'bearcms.themes.focus.options.Hidden' => 'Скрито',
-    'bearcms.themes.focus.options.Other content' => 'Друго съдържание',
     'bearcms.themes.focus.options.Other pages' => 'Други страници',
     'bearcms.themes.focus.options.Back to home button' => 'Бутон към началото',
     'bearcms.themes.focus.options.Content' => 'Съдържание',

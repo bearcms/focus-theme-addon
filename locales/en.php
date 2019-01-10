@@ -19,7 +19,6 @@ return [
     'bearcms.themes.focus.options.Visibility' => 'Visibility',
     'bearcms.themes.focus.options.Visible' => 'Visible',
     'bearcms.themes.focus.options.Hidden' => 'Hidden',
-    'bearcms.themes.focus.options.Other content' => 'Other content',
     'bearcms.themes.focus.options.Other pages' => 'Other pages',
     'bearcms.themes.focus.options.Back to home button' => 'Back to home button',
     'bearcms.themes.focus.options.Content' => 'Content',

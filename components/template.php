@@ -26,9 +26,6 @@ $homePageDescriptionVisibility = $options->getValue('homePageDescriptionVisibili
                 min-height: 100%;
             }
             *{outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-            ul,ol,li{list-style-position:inside;}
-            img{border:0;}
-            a{text-decoration:none;}
             .template-content-container{min-height:100vh;display:flex;justify-content:center;flex-direction:column;}
             .template-content-container > *{width:100%;}
         </style>
@@ -38,7 +35,7 @@ $homePageDescriptionVisibility = $options->getValue('homePageDescriptionVisibili
         if ($isHomePage) {
             echo '<section class="template-home-page-container">';
             if (!empty($homePageLogoImage)) {
-                $imageHTML = '<component src="bearcms-image-element" class="template-home-page-logo" onClick="openUrl" url="' . htmlentities($app->request->base) . '/" filename="' . htmlentities($homePageLogoImage) . '"/>';
+                $imageHTML = '<component src="bearcms-image-element" class="template-home-page-logo" filename="' . htmlentities($homePageLogoImage) . '"/>';
                 echo '<div><div class="template-home-page-logo-container">' . $imageHTML . '</div></div>';
             }
             if ($homePageTitleVisibility === '1') {
@@ -47,7 +44,6 @@ $homePageDescriptionVisibility = $options->getValue('homePageDescriptionVisibili
             if ($homePageDescriptionVisibility === '1') {
                 echo '<div><div class="template-home-page-description-container"><div class="template-home-page-description">' . htmlspecialchars($settings->description) . '</div></div></div>';
             }
-            //<component src="bearcms-elements" id="test1" editable="true"/>
             echo '<div><div class="template-home-page-content-container"><div class="template-home-page-content">{{body}}</div></div></div>';
             echo '</section>';
         } else {

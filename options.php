@@ -21,7 +21,7 @@ $homePageLogoGroup
         ->addOption("homePageLogoImageCSS", "css", "", [
             "cssTypes" => ["cssMargin", "cssBorder", "cssRadius", "cssShadow", "cssSize"],
             "cssOutput" => [
-                ["rule", ".template-home-page-logo", "box-sizing:border-box;display:inline-block;overflow:hidden;font-size:0;"],
+                ["rule", ".template-home-page-logo", "box-sizing:border-box;overflow:hidden;font-size:0;"],
                 ["selector", ".template-home-page-logo"]
             ]
         ]);
@@ -51,7 +51,7 @@ $homePageTitleGroup
         ])
         ->addOption("homePageTitleCSS", "css", "", [
             "cssOutput" => [
-                ["rule", ".template-home-page-title", "display:inline-block;text-decoration:none;"],
+                ["rule", ".template-home-page-title", "box-sizing:border-box;display:inline-block;text-decoration:none;"],
                 ["selector", ".template-home-page-title"]
             ]
         ]);
@@ -97,7 +97,7 @@ $homePageDescriptionContainerGroup
         ]);
 
 
-$homePageContentGroup = $homePageGroup->addGroup(__("bearcms.themes.focus.options.Other content"));
+$homePageContentGroup = $homePageGroup->addGroup(__("bearcms.themes.focus.options.Content"));
 $homePageContentGroup
         ->addOption("homePageContentCSS", "css", "", [
             "cssTypes" => ["cssPadding", "cssMargin", "cssBorder", "cssRadius", "cssShadow", "cssBackground", "cssSize"],
@@ -127,9 +127,9 @@ $homePageContainerGroup
             ]
         ]);
 
-$otherPagesGroup = $schema->addGroup(__("bearcms.themes.focus.options.Other pages"));
+$pagesGroup = $schema->addGroup(__("bearcms.themes.focus.options.Other pages"));
 
-$pageBackToHomeGroup = $otherPagesGroup->addGroup(__("bearcms.themes.focus.options.Back to home button"));
+$pageBackToHomeGroup = $pagesGroup->addGroup(__("bearcms.themes.focus.options.Back to home button"));
 $pageBackToHomeGroup
         ->addOption("pageBackToHomeButtonCSS", "css", "", [
             "cssTypes" => ["cssMargin", "cssBorder", "cssRadius", "cssShadow", "cssBackground", "cssSize"],
@@ -149,8 +149,7 @@ $pageBackToHomeContainerGroup
             ]
         ]);
 
-$pageContentGroup = $otherPagesGroup->addGroup(__("bearcms.themes.focus.options.Content"));
-$pageContentGroup
+$pagesGroup
         ->addOption("pageContentCSS", "css", "", [
             "cssTypes" => ["cssPadding", "cssMargin", "cssBorder", "cssRadius", "cssShadow", "cssBackground", "cssSize"],
             "cssOutput" => [
@@ -158,9 +157,13 @@ $pageContentGroup
                 ["selector", ".template-page-content"]
             ]
         ]);
-$pageContentGroup->addElementsGroup('pageContentElements', '.template-page-content');
 
-$pageContentElementsContainerGroup = $pageContentGroup->addGroup(__("bearcms.themes.focus.options.Container"));
+$pagesContentGroup = $pagesGroup->addGroup(__("bearcms.themes.focus.options.Content"));
+
+$pagesContentGroup->addElementsGroup('pageContentElements', '.template-page-content');
+$pagesContentGroup->addPages();
+
+$pageContentElementsContainerGroup = $pagesGroup->addGroup(__("bearcms.themes.focus.options.Container"));
 $pageContentElementsContainerGroup
         ->addOption("pageContentElementsContainerCSS", "css", "", [
             "cssTypes" => ["cssPadding", "cssMargin", "cssBorder", "cssRadius", "cssShadow", "cssBackground", "cssSize", "cssTextAlign"],
@@ -179,7 +182,6 @@ $windowGroup
             ]
         ]);
 
-$schema->addPagesGroup();
 
 
 return $schema;
