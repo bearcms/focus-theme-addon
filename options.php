@@ -7,13 +7,7 @@
  * Free to use under the MIT license.
  */
 
-use BearFramework\App;
-
-$app = App::get();
-
-$schema = $app->bearCMS->themes->makeOptionsSchema();
-
-$homePageGroup = $schema->addGroup(__("bearcms.themes.focus.options.Home page"));
+$homePageGroup = $options->addGroup(__("bearcms.themes.focus.options.Home page"));
 
 $homePageLogoGroup = $homePageGroup->addGroup(__("bearcms.themes.focus.options.Logo"));
 $homePageLogoGroup
@@ -127,7 +121,7 @@ $homePageContainerGroup
             ]
         ]);
 
-$pagesGroup = $schema->addGroup(__("bearcms.themes.focus.options.Other pages"));
+$pagesGroup = $options->addGroup(__("bearcms.themes.focus.options.Other pages"));
 
 $pageBackToHomeGroup = $pagesGroup->addGroup(__("bearcms.themes.focus.options.Back to home button"));
 $pageBackToHomeGroup
@@ -173,7 +167,7 @@ $pageContentElementsContainerGroup
             ]
         ]);
 
-$windowGroup = $schema->addGroup(__("bearcms.themes.focus.options.Window"));
+$windowGroup = $options->addGroup(__("bearcms.themes.focus.options.Window"));
 $windowGroup
         ->addOption("windowCSS", "css", "", [
             "cssTypes" => ["cssPadding", "cssBorder", "cssRadius", "cssShadow", "cssBackground"],
@@ -181,7 +175,3 @@ $windowGroup
                 ["selector", ".template-content-container"]
             ]
         ]);
-
-
-
-return $schema;

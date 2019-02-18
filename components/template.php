@@ -13,9 +13,9 @@ $app = App::get();
 $settings = $app->bearCMS->data->settings->get();
 $isHomePage = (string) $app->request->path === '/';
 
-$homePageLogoImage = $options->getValue('homePageLogoImage');
-$homePageTitleVisibility = $options->getValue('homePageTitleVisibility');
-$homePageDescriptionVisibility = $options->getValue('homePageDescriptionVisibility');
+$homePageLogoImage = $customizations->getValue('homePageLogoImage');
+$homePageTitleVisibility = $customizations->getValue('homePageTitleVisibility');
+$homePageDescriptionVisibility = $customizations->getValue('homePageDescriptionVisibility');
 ?><html>
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,minimal-ui">
