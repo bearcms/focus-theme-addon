@@ -17,8 +17,9 @@ $button = '"color":"#ffffff","font-family":"Arial","font-size":"14px","line-heig
 $date = '"color":"#aaa","font-family":"Arial","font-size":"12px","line-height":"180%"';
 $image = '"border-top-left-radius":"2px","border-top-right-radius":"2px","border-bottom-left-radius":"2px","border-bottom-right-radius":"2px"';
 $userImage = '"width":"50px","height":"50px","margin-right":"8px",' . $image;
+$separator = '"background-color":"rgba(255,255,255,0.2)","height":"2px","margin-top":"30px","margin-bottom":"30px"';
 
-$getElementsStyles = function($prefix) use ($text, $h1, $h2, $h3, $input, $link, $button, $date, $userImage, $image) {
+$getElementsStyles = function ($prefix) use ($text, $h1, $h2, $h3, $input, $link, $button, $date, $userImage, $image, $separator) {
     return [
         $prefix . 'HeadingLargeCSS' => '{' . $h1 . '}',
         $prefix . 'HeadingMediumCSS' => '{' . $h2 . '}',
@@ -52,6 +53,9 @@ $getElementsStyles = function($prefix) use ($text, $h1, $h2, $h3, $input, $link,
         $prefix . 'ForumPostsShowMoreButtonCSS' => '{' . $link . '}',
         $prefix . 'ForumPostsNewPostButtonCSS' => '{' . $link . '}',
         $prefix . 'ShareButtonCSS' => '{' . $button . '}',
+        $prefix . 'SeparatorLargeCSS' => '{' . $separator . ',"width":"80%"}',
+        $prefix . 'SeparatorMediumCSS' => '{' . $separator . ',"width":"60%"}',
+        $prefix . 'SeparatorSmallCSS' => '{' . $separator . ',"width":"40%"}',
     ];
 };
 
