@@ -13,7 +13,7 @@ $app = App::get();
 
 $app->bearCMS->themes
     ->register('bearcms/focus', function (\BearCMS\Themes\Theme $theme) use ($app) {
-        $context = $app->contexts->get(__FILE__);
+        $context = $app->contexts->get(__DIR__);
 
         $app->localization
             ->addDictionary('en', function () use ($context) {
@@ -26,7 +26,7 @@ $app->bearCMS->themes
         $context->assets
             ->addDir('assets');
 
-        $theme->version = '1.4';
+        $theme->version = '1.5';
 
         $theme->get = function (\BearCMS\Themes\Theme\Customizations $customizations) use ($context) {
             $templateFilename = $context->dir . '/components/template.php';
