@@ -13,7 +13,7 @@ $app = App::get();
 $settings = $app->bearCMS->data->settings->get();
 $isHomePage = (string) $app->request->path === '/';
 
-$homePageLogoImage = $customizations->getValue('homePageLogoImage');
+$homePageLogoImage = (string)$customizations->getValue('homePageLogoImage');
 $homePageTitleVisibility = $customizations->getValue('homePageTitleVisibility');
 $homePageDescriptionVisibility = $customizations->getValue('homePageDescriptionVisibility');
 ?><html>
@@ -34,8 +34,9 @@ $homePageDescriptionVisibility = $customizations->getValue('homePageDescriptionV
         echo '<div class="template-content-container">';
         if ($isHomePage) {
             echo '<section class="template-home-page-container">';
-            if (!empty($homePageLogoImage)) {
-                $imageHTML = '<component src="bearcms-image-element" class="template-home-page-logo" filename="' . htmlentities($homePageLogoImage) . '"/>';
+            if (isset($homePageLogoImage[0])) {
+                $homePageLogoImageDetails = $customizations->getAssetDetails($homePageLogoImage, ['filename', 'width', 'height']);
+                $imageHTML = '<component src="bearcms-image-element" class="template-home-page-logo" filename="' . htmlentities($homePageLogoImageDetails['filename']) . '" fileWidth="' . htmlentities($homePageLogoImageDetails['width']) . '" fileHeight="' . htmlentities($homePageLogoImageDetails['height']) . '"/>';
                 echo '<div><div class="template-home-page-logo-container">' . $imageHTML . '</div></div>';
             }
             if ($homePageTitleVisibility === '1') {
