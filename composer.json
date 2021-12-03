@@ -1,7 +1,11 @@
 {
     "name": "bearcms/focus-theme-addon",
     "description": "Focus Theme for Bear CMS",
-    "keywords": ["focus", "theme", "Bear CMS"],
+    "keywords": [
+        "focus",
+        "theme",
+        "Bear CMS"
+    ],
     "homepage": "https://github.com/bearcms/focus-theme-addon",
     "license": "MIT",
     "authors": [
@@ -12,11 +16,13 @@
         }
     ],
     "require": {
-        "php": "7.1.*|7.2.*|7.3.*|7.4.*|8.0.*",
+        "php": "7.1.*|7.2.*|7.3.*|7.4.*|8.0.*|8.1.*",
         "bearcms/bearframework-addon": "^1.33",
         "bearframework/localization-addon": "1.*"
     },
     "autoload": {
-        "files": ["autoload.php"]
+        "files": [
+            "autoload.php"
+        ]
     }
 }
