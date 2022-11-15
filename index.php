@@ -24,9 +24,10 @@ $app->bearCMS->themes
             });
 
         $context->assets
-            ->addDir('assets');
+            ->addDir('assets')
+            ->addDir('values/files');
 
-        $theme->version = '1.5';
+        $theme->version = '1.6';
 
         $theme->get = function (\BearCMS\Themes\Theme\Customizations $customizations) use ($context) {
             $templateFilename = $context->dir . '/components/template.php';
@@ -59,25 +60,8 @@ $app->bearCMS->themes
         $theme->options = function () use ($context, $theme) {
             $options = $theme->makeOptions(); // used inside
             require $context->dir . '/options.php';
-            $values = require $context->dir . '/styles/1.php';
+            $values = json_decode(file_get_contents($context->dir . '/values/values.json'), true);
             $options->setValues($values);
             return $options;
-        };
-
-        $theme->styles = function () use ($context, $theme) {
-            $styles = [];
-            for ($i = 1; $i <= 4; $i++) {
-                $style = $theme->makeStyle();
-                $style->media = [
-                    [
-                        'filename' => $context->dir . '/assets/' . $i . '.jpg',
-                        'width' => 1246,
-                        'height' => 968,
-                    ]
-                ];
-                $style->values = require $context->dir . '/styles/' . $i . '.php';
-                $styles[] = $style;
-            }
-            return $styles;
         };
     });
