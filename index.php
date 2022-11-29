@@ -27,7 +27,7 @@ $app->bearCMS->themes
             ->addDir('assets')
             ->addDir('values/files');
 
-        $theme->version = '1.6';
+        $theme->version = '1.7';
 
         $theme->get = function (\BearCMS\Themes\Theme\Customizations $customizations) use ($context) {
             $templateFilename = $context->dir . '/components/template.php';
@@ -56,6 +56,36 @@ $app->bearCMS->themes
             ];
             return $manifest;
         };
+
+        $updateValues = function (array $values = null) {
+            // Get old assets from the CMS server
+            $oldAssets = array(
+                'addon:bearcms/focus-theme-addon:assets/s4/1.jpg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s4/1.jpg',
+                'addon:bearcms/focus-theme-addon:assets/s4/home-button.svg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s4/home-button.svg',
+                'addon:bearcms/focus-theme-addon:assets/s3/1.jpg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s3/1.jpg',
+                'addon:bearcms/focus-theme-addon:assets/s3/home-button.svg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s3/home-button.svg',
+                'addon:bearcms/focus-theme-addon:assets/s2/1.jpg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s2/1.jpg',
+                'addon:bearcms/focus-theme-addon:assets/s2/home-button.svg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s2/home-button.svg',
+                'addon:bearcms/focus-theme-addon:assets/s1/1.jpg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s1/1.jpg',
+                'addon:bearcms/focus-theme-addon:assets/s1/home-button.svg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s1/home-button.svg',
+            );
+            $valuesJSON = json_encode($values, true);
+            if (strpos($valuesJSON, ':') !== false) {
+                foreach ($oldAssets as $oldKey => $newKey) {
+                    $search[] = 'url(' . $oldKey . ')';
+                    $replace[] = 'url(' . $newKey . ')';
+                    $search[] = trim(json_encode('url(' . $oldKey . ')', JSON_THROW_ON_ERROR), '"');
+                    $replace[] = trim(json_encode('url(' . $newKey . ')', JSON_THROW_ON_ERROR), '"');
+                    $search[] = trim(json_encode(trim(json_encode('url(' . $oldKey . ')', JSON_THROW_ON_ERROR), '"'), JSON_THROW_ON_ERROR), '"');
+                    $replace[] = trim(json_encode(trim(json_encode('url(' . $newKey . ')', JSON_THROW_ON_ERROR), '"'), JSON_THROW_ON_ERROR), '"');
+                }
+                $valuesJSON = str_replace($search, $replace, $valuesJSON);
+                $values = json_decode($valuesJSON, true);
+            }
+            return $values;
+        };
+
+        $theme->updateValues = $updateValues;
 
         $theme->options = function () use ($context, $theme) {
             $options = $theme->makeOptions(); // used inside
