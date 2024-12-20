@@ -36,7 +36,7 @@ $homePageDescriptionVisibility = $customizations->getValue('homePageDescriptionV
             echo '<section class="template-home-page-container">';
             if (isset($homePageLogoImage[0])) {
                 $homePageLogoImageDetails = $customizations->getAssetDetails($homePageLogoImage, ['filename', 'width', 'height']);
-                $imageHTML = '<component src="bearcms-image-element" class="template-home-page-logo" filename="' . htmlentities($homePageLogoImageDetails['filename']) . '" fileWidth="' . htmlentities($homePageLogoImageDetails['width']) . '" fileHeight="' . htmlentities($homePageLogoImageDetails['height']) . '"/>';
+                $imageHTML = '<component src="bearcms-image-element" class="template-home-page-logo" filename="' . htmlentities((string)$homePageLogoImageDetails['filename']) . '" fileWidth="' . htmlentities((string)$homePageLogoImageDetails['width']) . '" fileHeight="' . htmlentities((string)$homePageLogoImageDetails['height']) . '"/>';
                 echo '<div><div class="template-home-page-logo-container">' . $imageHTML . '</div></div>';
             }
             if ($homePageTitleVisibility === '1') {
