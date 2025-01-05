@@ -12,7 +12,7 @@ use BearFramework\App;
 $app = App::get();
 
 $app->bearCMS->themes
-    ->register('bearcms/focus', function (\BearCMS\Themes\Theme $theme) use ($app) {
+    ->register('bearcms/focus', function (\BearCMS\Themes\Theme $theme) use ($app): void {
         $context = $app->contexts->get(__DIR__);
 
         $app->localization
@@ -57,7 +57,7 @@ $app->bearCMS->themes
             return $manifest;
         };
 
-        $updateValues = function (array $values = null) {
+        $updateValues = function (?array $values = null) {
             // Get old assets from the CMS server
             $oldAssets = array(
                 'addon:bearcms/focus-theme-addon:assets/s4/1.jpg' => 'addon:bearcms/bearframework-addon:assets/s/otsa/t/focus/assets/s4/1.jpg',
